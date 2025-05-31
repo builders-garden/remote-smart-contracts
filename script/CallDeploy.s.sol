@@ -7,7 +7,7 @@ import "../src/Factory.sol";
 contract CallDeploy is Script {
     function run() external {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
-        address factoryAddress = 0x12ee277c6C2c0E034210Db980FB9856330d66588;
+        address factoryAddress = 0x327Fcd2B394A862978853fF3F53645946C648E53;
         address ownerAddress = 0x69EF5048F40b66727aBC0F8B5EAf1eC2C31fDaEc;
         vm.startBroadcast(deployerPrivateKey);
 

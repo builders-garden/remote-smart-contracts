@@ -95,7 +95,7 @@ contract Create2Factory {
 
         require(deployedAddress != address(0), "Create2Factory: deployment failed");
         emit ContractDeployed(deployedAddress, salt);
-
+        account[owner] = deployedAddress;
         IRemote(deployedAddress).init(
             owner,
             endpoint,

@@ -52,8 +52,8 @@ contract TransferEth is Script {
             SendParam memory sendParam,
             MessagingFee memory messagingFee
         ) = stargateComposer.prepare(
-                FLOW_STARGATE_OFT_ETH, // stargate on ethereum sepolia
-                BASE_CHAIN_EID, // destinationEndpointId (arbitrum sepolia)
+                BASE_STARGATE_POOL_NATIVE, // stargate on ethereum sepolia
+                FLOW_CHAIN_EID, // destinationEndpointId (arbitrum sepolia)
                 10000000000000, // amount
                 address(0x555F64d059F761a6909F03125cFF87D2cb690595), // to
                 _composeMsg, // composeMsg
@@ -68,7 +68,7 @@ contract TransferEth is Script {
         //IERC20(0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590).approve(FLOW_STARGATE_OFT_ETH, 30000000000000);
 
         // Send the transaction with the correct value
-        IStargate(FLOW_STARGATE_OFT_ETH).sendToken{value: valueToSend}(
+        IStargate(FLOW_STARGATE_OFT_ETH).sendToken{value: messagingFee.nativeFee}(
             sendParam,
             messagingFee,
             0x69EF5048F40b66727aBC0F8B5EAf1eC2C31fDaEc
