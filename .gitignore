@@ -12,6 +12,7 @@ docs/
 
 # Dotenv file
 .env
+.env.clean
 
 # node_modules
 node_modules/

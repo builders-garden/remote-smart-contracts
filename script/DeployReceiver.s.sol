@@ -1,16 +1,13 @@
-// SPDX-License-Identifier: UNLICENSED
+/* // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
 import {Script, console} from "forge-std/Script.sol";
 
-import {Receiver} from "../src/Receiver.sol";
-import {ENDPOINT, SEPOLIA_STARGATE, SEPOLIA_AAVE_WRAPPED_TOKEN} from "./Constants.sol";
-
-import {WrappedTokenGatewayV3} from "aave-v3/helpers/WrappedTokenGatewayV3.sol";
-
-// deploy on sepolia
+import {Remote} from "../src/Remote.sol";
+import {BASE_ENDPOINT, BASE_STARGATE_POOL_ETH} from "./Constants.sol";
+// deploy on arbitrum-sepolia
 contract DeployReceiver is Script {
-    Receiver public receiver;
+    Remote public remote;
 
     uint256 internal deployerPrivateKey = vm.envUint("DEPLOYER_KEY");
     address deployerAddr = vm.addr(deployerPrivateKey);
@@ -18,17 +15,16 @@ contract DeployReceiver is Script {
     function setUp() public {}
 
     function run() public {
+        console.log("Deploying on Arbitrum Sepolia");
+        console.log("Deployer address:", deployerAddr);
+        console.log("Deployer balance:", deployerAddr.balance);
+
         vm.startBroadcast(deployerPrivateKey);
 
-        console.log("deployer balance", deployerAddr.balance, deployerAddr);
 
-        // deploy receiver on arbitrum
-        receiver = new Receiver(
-            SEPOLIA_AAVE_WRAPPED_TOKEN,
-            ENDPOINT,
-            SEPOLIA_STARGATE
-        );
+        console.log("remote deployed at:", address(remote));
 
         vm.stopBroadcast();
     }
 }
+ */
